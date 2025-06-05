@@ -1,5 +1,7 @@
 //como se trabaja con archivos y se carga en memoria el modulo de archivo tengo que hacer el fs
 const fs = require("fs")
+const path = require("path");
+
 
 //pide tambien que las claves de los usuarios esten codificadas, por eso le pedimos que cargue el modulo crypto
 const crypto = require("crypto");
@@ -20,7 +22,6 @@ class UserManager { //no usan una clase como molda para crear instancias de la c
     }
   }
 }
-const path = require('path');
 
 //console.log(userManager.getUsuario) //esto va a devolver una promesa de arreglo vacio porque toda operacion async (es decir los return que tiene adentro) va a devolver una promesa
 //para resolver la promesa hago lo siguiente:
