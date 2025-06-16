@@ -17,12 +17,18 @@ class UserManager { //no usan una clase como molda para crear instancias de la c
       return []; //si el archivo no existe no voy a leer nada entonces devuelvo un array vacio
     }
   }
+
+  async addUsuario(nombre, email) {
+    let usuario = await this.leerUsuarios()
+  }
 }
 
 //console.log(userManager.getUsuario) //esto va a devolver una promesa de arreglo vacio porque toda operacion async (es decir los return que tiene adentro) va a devolver una promesa
 //para resolver la promesa hago lo siguiente:
 const entorno = async () => {
-  let userManager = new UserManager("./data/ejercicio.json") // aca estoy enviando la ruta cuando llamo el constructor
+  console.log("DIRNAME:",__dirname)
+  // let userManager = new UserManager("./data/ejercicio.json") // aca estoy enviando la ruta cuando llamo el constructor. RUTA RELATIVA
+  let userManager = new UserManager(__dirname+"/data/ejercicio.json") // aca estoy enviando la ruta cuando llamo el constructor. RUTA ABOSLUTA
   try{
     console.log(await userManager.getUsuario())
   } catch (error){
