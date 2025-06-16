@@ -8,7 +8,7 @@ class UserManager { //no usan una clase como molda para crear instancias de la c
     this.path = rutaArchivo//aca no definimos una propiedad sino un una ruta de archivo
   }
   //Ahora van los metodos
-  async getUsuario(){
+  async leerUsuarios(){
     if (fs.existsSync(this.path)) {//aca pregunto si el archivo existe, y si existe voy a pedir que haga algo
       /*aca estoy diciendo que ejecute este metodo de leer, el cual devuelve una promesa. Que espere a que se resuelva la promesa,
         y acese resultado devuelto, el cual va a ser un archivo en formato texto, lo mande como argumento del parse, entonces va a devolver el objeto*/
@@ -23,17 +23,22 @@ class UserManager { //no usan una clase como molda para crear instancias de la c
   }
 }
 
-//console.log(userManager.getUsuario) //esto va a devolver una promesa de arreglo vacio porque toda operacion async (es decir los return que tiene adentro) va a devolver una promesa
-//para resolver la promesa hago lo siguiente:
-const entorno = async () => {
-  console.log("DIRNAME:",__dirname)
-  // let userManager = new UserManager("./data/ejercicio.json") // aca estoy enviando la ruta cuando llamo el constructor. RUTA RELATIVA
-  let userManager = new UserManager(__dirname+"/data/ejercicio.json") // aca estoy enviando la ruta cuando llamo el constructor. RUTA ABOSLUTA
-  try{
-    console.log(await userManager.getUsuario())
-  } catch (error){
-    console.log(error.message);
-  }
-}
+//exportamos estos modulos y tenemos que borrar/comentar todo lo que este en ejecucion y nos quedamos solo con la estructura de la clase
+module.exports = UserManager
 
-entorno() // esto me va a devolver el array de objetos que tengo en el archivo json: [ { usuario: 'seba' }, { usuario: 'anto' } ]
+// //console.log(userManager.getUsuario) //esto va a devolver una promesa de arreglo vacio porque toda operacion async (es decir los return que tiene adentro) va a devolver una promesa
+// //para resolver la promesa hago lo siguiente:
+// const entorno = async () => {
+//   console.log("DIRNAME:",__dirname)
+//   console.log("RUTA ABOSLUTA A MANO:",__dirname+"/data/usuarios.json")
+//   console.log("RUTA CON path.join:",path.join(__dirname, "data", "usuarios.json"))
+//   // let userManager = new UserManager("./data/ejercicio.json") // aca estoy enviando la ruta cuando llamo el constructor. RUTA RELATIVA
+//   let userManager = new UserManager(path.join(__dirname, "data", "usuarios.json")) // aca estoy enviando la ruta cuando llamo el constructor. RUTA ABOSLUTA
+//   try{
+//     console.log(await userManager.leerUsuarios())
+//   } catch (error){
+//     console.log(error.message);
+//   }
+// }
+
+// entorno() // esto me va a devolver el array de objetos que tengo en el archivo json: [ { usuario: 'seba' }, { usuario: 'anto' } ]
