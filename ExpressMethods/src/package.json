@@ -1,0 +1,24 @@
+{
+  "name": "prueba-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Clase seba crack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebaRiosCardona/class-code.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/SebaRiosCardona/class-code/issues"
+  },
+  "homepage": "https://github.com/SebaRiosCardona/class-code#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
